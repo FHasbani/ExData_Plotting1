@@ -43,7 +43,7 @@ data$Daytime <- paste(data$Date, data$Time)
 data$Daytime <- as.POSIXct(data$Daytime)
 
 # Start PNG device, generate graph right into plot1.png file, close device
-png(filename = "plot4.png", width = 480, height = 480, units = "px", pointsize = 12, res = NA, family = "", restoreConsole = TRUE, type = c("windows", "cairo", "cairo-png"))
+png(filename = "plot4.png", width = 480, height = 480, units = "px", pointsize = 10, res = NA, family = "", restoreConsole = TRUE, type = c("windows", "cairo", "cairo-png"))
 # Create the plot into the specified file: plot4.png
 
 par(mfrow = c(2,2)) #, mar = c(4,4,2,1), oma = c(0,0,2,0))
@@ -53,7 +53,7 @@ with(data, {
         plot(Daytime, Sub_metering_1, type = "l", xlab="", ylab="Energy sub metering")
         lines(Daytime, Sub_metering_2, col="red")
         lines(Daytime, Sub_metering_3, col="blue")
-        legend("topright", col = c("black", "red", "blue"), lty= "solid", box.lwd = 0, legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3") )      
+        legend("topright", col = c("black", "red", "blue"), lty= "solid", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), inset = 0.005, box.col = "white")      
         plot(Daytime, Global_reactive_power, type = "l", xlab="datetime")  
         })
 
