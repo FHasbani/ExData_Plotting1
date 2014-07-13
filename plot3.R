@@ -32,9 +32,8 @@ file <- "./household_power_consumption.txt"
 if (!file.exists(file)){unzip("./power.zip")}
 
 # Loading the data file into the table, reading all 70K then subsetting table
-reqDates <- c("1/2/2007", "2/2/2007")
-data <- read.table(file, header = TRUE, sep = ";", nrows = 70000, quote = "", colClasses = c("character", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"), stringsAsFactors = FALSE, na.strings="?")
-data <- (data[which(data$Date %in% reqDates ),])
+data <- read.table(pipe('grep "^[1-2]/2/2007" "household_power_consumption.txt"'), header=F, sep=";")
+colnames(data) <-names(read.table("household_power_consumption.txt", header=TRUE,sep=";",nrows=1))
 
 
 # Setting un the time & date in the required format POSIXct is better
